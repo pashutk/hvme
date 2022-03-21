@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello wasm-pack!</title>
+  </head>
+  <body style="margin: 0;">
+    <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;height: 100vh;padding: 1rem;box-sizing: border-box;">
+      <textarea id="sourceCode" autofocus style="display: block;width: 100%;height: 50%;box-sizing: border-box;">// Creates a tree with `2^n` elements
+(Gen 0) = (Leaf 1)
+(Gen n) = (Node (Gen(- n 1)) (Gen(- n 1)))
+
+// Adds all elements of a tree
+(Sum (Leaf x))   = x
+(Sum (Node a b)) = (+ (Sum a) (Sum b))
+
+// Performs 2^n additions in parallel
+Main = (Sum (Gen 16))</textarea>
+      <pre id="result" style="display: block;width: 100%;height: 50%;box-sizing: border-box;"></pre>
+    </div>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>
